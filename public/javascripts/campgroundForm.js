@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const forms = document.querySelectorAll('.needs-validation');
+  const forms = document.querySelectorAll('.needs-validation.campground-form');
 
   forms.forEach(form => {
     const inputs = form.querySelectorAll('input, textarea, select');
