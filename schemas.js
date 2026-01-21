@@ -28,11 +28,11 @@ const Joi = BaseJoi.extend(extension)
 
 module.exports.campgroundSchema = Joi.object({
         campground: Joi.object({
-        title: Joi.string().required().escapeHTML(),
-        price: Joi.number().required().min(0),
+        title: Joi.string().min(2).max(50).required().escapeHTML(),
+        price: Joi.number().min(1).max(10000).precision(2).required(),
         // image: Joi.string().required(),
-        location: Joi.string().required(),
-        description: Joi.string().required()
+        location: Joi.string().min(2).max(50).required().escapeHTML(),
+        description: Joi.string().min(10).max(1000).pattern(/[a-zA-Z]/).required().escapeHTML().messages({'string.pattern.base': 'Description must contain letters, not only numbers.'})
     }).required(),
     deleteImages: Joi.array()
 });
