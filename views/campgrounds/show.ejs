@@ -58,7 +58,7 @@
         <div class="col-6">
             <% if(currentUser){ %>
                 <h2>Leave a Review</h2>
-                <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form"
+                <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="needs-validation review-form"
                     novalidate>
                     <!-- <div class="mb-3">
                 <label class="form-label" for="rating">Rating</label>
@@ -80,10 +80,10 @@
                     </fieldset>
                     <div class="mb-3">
                         <label class="form-label" for="body">Review Text</label>
-                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
-                            required></textarea>
-                        <div class="valid-feedback">
-                            Looks good!
+                        <textarea class="form-control" id="body" name="review[body]" required minlength="3" maxlength="1000"
+                            pattern=".*[a-zA-Z].*" placeholder="Write your review here..." rows="3"></textarea>
+                        <div class="invalid-feedback">
+                            Description must be at least 3 characters and contain letters (not only numbers).
                         </div>
                     </div>
                     <button class="btn btn-success">Submit</button>
@@ -113,3 +113,5 @@
                         <% } %>
         </div>
     </div>
+
+    <script src="/javascripts/reviewForm.js"></script>

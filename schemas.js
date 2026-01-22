@@ -39,7 +39,9 @@ module.exports.campgroundSchema = Joi.object({
 
 module.exports.reviewSchema = Joi.object({
         review: Joi.object({
-        rating: Joi.number().required().min(1).max(5),
-        body: Joi.string().required().escapeHTML()
-    }).required()
+            rating: Joi.number().required().min(1).max(5),
+            body: Joi.string().min(3).max(1000).pattern(/[a-zA-Z]/).required().escapeHTML().messages({
+                    'string.pattern.base': 'Description must contain letters, not only numbers.'
+                })
+            }).required()
 })
